@@ -8,7 +8,7 @@ const Input = ({ id, label, value, type, required, placeholder, handleChange, on
     return (<>
         <div className="input-div">
             { label &&
-                <label className="input-label">
+                <label className="input-label" htmlFor={id}>
                     {label}
                 </label>
             }

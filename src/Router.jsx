@@ -1,9 +1,21 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Page/Home/Home";
+import Login from "./Page/Login/LoginPage";
 
-
-export const Router = () => {
+// eslint-disable-next-line react/prop-types
+const Router = ({ children }) => {
     return (
-        //TODO Make router with Home page and Login page
-        <div>
-        </div>
-    )
-}
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="login" element={<Login />} />
+                    <Route index element={<Home />} />
+                </Routes>
+                { children }
+            </BrowserRouter>
+        </>
+    );
+};
+
+export default Router;

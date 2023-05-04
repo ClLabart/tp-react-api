@@ -1,56 +1,67 @@
 // Genral imports
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Input from "../Input/Input";
 
 // Style imports
-import './LoginForm.css';
+import "./LoginForm.css";
 
-const LoginForm = ({handleSubmit}) => {
-
+const LoginForm = ({ handleSubmit }) => {
     const [credentials, setCredentials] = useState({
-        login: '',
-        password: ''
+        login: "",
+        password: "",
     });
 
-    const handleChange = ({key, value}) => {
+    const handleChange = ({ key, value }) => {
         setCredentials((prevState) => {
-            return {...prevState, [key]: value};
+            return { ...prevState, [key]: value };
         });
     };
 
     const handleLoginChange = (event) => {
         handleChange({
-            key: 'login',
-            value: event.currentTarget.value
+            key: "login",
+            value: event.currentTarget.value,
         });
     };
 
     const handlePasswordChange = (event) => {
         handleChange({
-            key: 'password',
-            value: event.currentTarget.value
+            key: "password",
+            value: event.currentTarget.value,
         });
     };
 
-    const handleSubmitForm = async(event) => {
+    const handleSubmitForm = async (event) => {
         event.preventDefault();
         await handleSubmit(credentials);
     };
     //TODO Add Credentials Inputs (With Input Component)
     return (
         <>
-
             <form id="login-form" onSubmit={handleSubmitForm}>
+                <div className="credentials-and-password-container">
+                    <Input
+                        id={1}
+                        label={"Login"}
+                        type={"input"}
+                        required={true}
+                        placeholder={"Login"}
+                        handleChange={handleLoginChange}
+                    />
+                    
+                    <Input
+                        id={2}
+                        label={"Password"}
+                        type={"input"}
+                        required={true}
+                        placeholder={"Password"}
+                        handleChange={handlePasswordChange}
+                    />
 
-                <div className='credentials-and-password-container'>
-
-                    <button
-                        className='login-page-call-to-action'
-                        type="submit"
-                    >
+                    <button className="login-page-call-to-action" type="submit">
                         Submit
                     </button>
-
                 </div>
             </form>
         </>
