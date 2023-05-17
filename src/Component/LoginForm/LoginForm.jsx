@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Input from "../Input/Input";
+import PropTypes from "prop-types";
 
 // Style imports
 import "./LoginForm.css";
@@ -53,7 +54,7 @@ const LoginForm = ({ handleSubmit }) => {
                     <Input
                         id={2}
                         label={"Password"}
-                        type={"input"}
+                        type={"password"}
                         required={true}
                         placeholder={"Password"}
                         handleChange={handlePasswordChange}
@@ -66,6 +67,10 @@ const LoginForm = ({ handleSubmit }) => {
             </form>
         </>
     );
+};
+
+LoginForm.propTypes = {
+    handleSubmit: PropTypes.any,
 };
 
 export default LoginForm;

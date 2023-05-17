@@ -1,10 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-
+import PropTypes from "prop-types";
 import './Input.css';
 
 const Input = ({ id, label, value, type, required, placeholder, handleChange, onFocus }) => {
-
     return (<>
         <div className="input-div">
             { label &&
@@ -24,6 +23,17 @@ const Input = ({ id, label, value, type, required, placeholder, handleChange, on
             />
         </div>
     </>);
+};
+
+Input.propTypes = {
+    id: PropTypes.number,
+    label: PropTypes.string,
+    value: PropTypes.string,
+    type: PropTypes.string,
+    required: PropTypes.bool,
+    placeholder: PropTypes.string,
+    handleChange: PropTypes.func,
+    onFocus: PropTypes.any,
 };
 
 export default Input;

@@ -5,9 +5,116 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background: #121212; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.listPokemons {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10%;
+}
+
+.listPokemons li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  position: relative;
+  width: 20vw;
+  color: white;
+  text-decoration: none;
+}
+/* 
+.listPokemons li img {
+  max-width: 50%;
+} */
+
+.listPokemons li p {
+  text-align: center;
+}
+
+.listPokemons li img {
+  width: 80%;
+  padding-top: 20%;
+  transition: all .5s;
+}
+
+.listPokemons span {
+  inset:0;
+  z-index: -1;
+  /* height: 10px; */
+  border-radius: 20px;
+  position:absolute;
+  opacity: 30%;
+  /* bottom: 0; */
+  transition: all .5s;
+  filter: brightness(2);
+}
+
+.listPokemons li:hover img {
+  width: 100%;
+  padding: 0;
+}
+
+.listPokemons li:hover span {
+  inset: 50% 2% 5% 5%;
+}
+
+.loader {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: white;
+  position: relative;
+  border: solid 6px #3f3f3f;
+  animation: roll 1s ease-in-out infinite;
+  background: linear-gradient(
+    to bottom,
+    #e83e35 0%,
+    #e83e35 50.5%,
+    #ffffff 50.51%,
+    #ffffff 100%
+  );
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  top: calc(100px - 3px);
+  left: 0;
+  width: 200px;
+  height: 6px;
+  background: #3f3f3f;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 67px;
+  left: 67px;
+  width: 54px;
+  height: 54px;
+  border: solid 6px #3f3f3f;
+  border-radius: 50%;
+  background: white;
+  z-index: 1;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0) scale(0.5);
+  }
+  90%,
+  to {
+    transform: rotate(720deg) scale(0.5);
+  }
 }

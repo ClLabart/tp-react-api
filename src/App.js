@@ -1,28 +1,45 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import Router from "./Router";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+/*
+ TODO 
+    API : 
+    evolved from
+    evolve into
+    se connecter sur un seul navigateur => toucher au token et hook symfony
+    
+    Front : 
+    Mettre router dans require auth
+
+*/
+
 export function RequireAuth({ children }) {
+    const user = localStorage.getItem("user");
+    let location = useLocation();
     // Used to ensure the refreshToken is called once at a time
-    const user = localStorage.getItem("user"); // TODO Get user from local storage
 
     if (user === null) {
-        if (window.location.pathname !== "/login") {
+        if (location.pathname !== "/login") {
             return <Navigate to="/login" replace={true} />;
         } else {
             return children;
         }
+    } else if (typeof window !== 'undefined') { // ne s'éxécute qu'à l'ouverture de l'application
+        // fetch /users/me pour vérifier que tout est bon 
     } else {
         return children;
     }
 }
 
+RequireAuth.propTypes = {
+    children: PropTypes.node,
+};
+
 function App() {
-    //Navigation dans requireAuth
     return (
-        //TODO ROUTER
         <>
             <Router>
                 <RequireAuth></RequireAuth>
