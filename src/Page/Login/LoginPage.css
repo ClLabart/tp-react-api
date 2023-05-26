@@ -1,0 +1,15 @@
+.login main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login button {
+    border-radius: 5px;
+    padding: 5px;
+    background: unset;
+}
+
+.login button:hover {
+    background: rgba(240,240,240,.4)
+}

@@ -47,7 +47,7 @@ function App() {
             </Router>
             <Outlet />
             <footer>
-                Chloé
+                Corentin LABART - 2023
             </footer>
         </>
     );

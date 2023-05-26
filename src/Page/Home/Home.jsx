@@ -28,7 +28,7 @@ const HomePage = () => {
                 })
                 .then((data) => {
                     setPokemons(data);
-                    console.log(data);
+                    // console.log(data);
                     setIsLoading(false);
                     setTotalItems(data["hydra:totalItems"]);
                 });
@@ -54,11 +54,20 @@ const HomePage = () => {
             <header>
                 <h1>Liste des pokemon</h1>
             </header>
-            <aside className="changePage1">
-                <button onClick={() => pageChange(page - 1)}>&lt;</button>
-            </aside>
+            <button
+                className="changePage1"
+                onClick={() => pageChange(page - 1)}
+            >
+                &lt;
+            </button>
+            <button
+                className="changePage2"
+                onClick={() => pageChange(page + 1)}
+            >
+                &gt;
+            </button>
             <main>
-                <h2>Page {page}</h2>
+                <h2 className="center">Page {page}</h2>
                 <ul className="listPokemons">
                     {isLoading ? (
                         <div className="loader"></div>
@@ -93,9 +102,6 @@ const HomePage = () => {
                     )}
                 </ul>
             </main>
-            <aside className="changePage2">
-                <button onClick={() => pageChange(page + 1)}>&gt;</button>
-            </aside>
         </div>
     );
 };

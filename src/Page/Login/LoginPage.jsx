@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "../../Component/LoginForm/LoginForm";
 import { useNavigate } from "react-router-dom";
+import './LoginPage.css';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -50,7 +51,9 @@ const LoginPage = () => {
             {formSubmitting ? (
                 <div className="loader"></div>
             ) : (
-                <LoginForm handleSubmit={handleSubmit} />
+                <main>
+                    <LoginForm handleSubmit={handleSubmit} />
+                </main>
             )}
             {errorMessage !== "" ? errorMessage : ""}
         </div>

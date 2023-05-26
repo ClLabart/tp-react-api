@@ -20,6 +20,7 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10%;
+  padding: 0;
 }
 
 .listPokemons li a {
@@ -30,8 +31,9 @@ code {
   font-weight: bold;
   position: relative;
   width: 20vw;
-  color: white;
+  color: black;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 /* 
 .listPokemons li img {
@@ -117,4 +119,45 @@ code {
   to {
     transform: rotate(720deg) scale(0.5);
   }
+}
+
+header {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  position: fixed;
+  bottom : 10px;
+  width: 100%;
+}
+
+[class^=changePage] {
+  --spacing: 1rem;
+  position: fixed;
+  background: none;
+  font-size: 3em;
+  border: none;
+  transition: all .3s;
+  color:black;
+  text-decoration: none;
+  top: 48%;
+}
+
+[class^=changePage]:hover {
+  color: rgb(132, 132, 132);
+  transform: scale(1.5)
+}
+
+.changePage1 {
+  left: var(--spacing);
+}
+
+.changePage2 {
+  right: var(--spacing);
 }

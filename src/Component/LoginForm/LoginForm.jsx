@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Input from "../Input/Input";
 import PropTypes from "prop-types";
+import "./LoginForm.css";
 
 // Style imports
 import "./LoginForm.css";
@@ -50,7 +51,7 @@ const LoginForm = ({ handleSubmit }) => {
                         placeholder={"Login"}
                         handleChange={handleLoginChange}
                     />
-                    
+
                     <Input
                         id={2}
                         label={"Password"}
