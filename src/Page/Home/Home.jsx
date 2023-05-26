@@ -6,6 +6,7 @@ const HomePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [pokemons, setPokemons] = useState({});
     const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(100);
 
     const getPokemons = async () => {
         setIsLoading(true);
@@ -29,6 +30,7 @@ const HomePage = () => {
                     setPokemons(data);
                     console.log(data);
                     setIsLoading(false);
+                    setTotalItems(data["hydra:totalItems"]);
                 });
         } catch (error) {
             throw new error();
@@ -38,7 +40,9 @@ const HomePage = () => {
     };
 
     const pageChange = (newPage) => {
-        if (newPage > 0) {
+        if (newPage > totalItems / 20) {
+            setPage(1);
+        } else if (newPage > 0) {
             setPage(newPage);
         }
     };
@@ -46,42 +50,53 @@ const HomePage = () => {
     useMemo(() => getPokemons(), [page]);
 
     return (
-        <>
-            <button onClick={() => pageChange(page - 1)}>&lt;</button>
-            <button onClick={() => pageChange(page + 1)}>&gt;</button>
-            <ul className="listPokemons">
-                {isLoading ? (
-                    <div className="loader"></div>
-                ) : (
-                    pokemons["hydra:member"].map((item) => {
-                        return (
-                            <li key={item.id}>
-                                <Link to={`pokemon/${item.id}`}>
-                                    <img
-                                        loading="lazy"
-                                        src={item.front_default}
-                                        alt={"photo de : " + item.name}
-                                    />
-                                    <p>
-                                        {item.name} / {item.id}
-                                    </p>
-                                    <span
-                                        style={{
-                                            background:
-                                                item.color.name == "white"
-                                                    ? "dimgrey"
-                                                    : item.color.name == "pink"
-                                                    ? "hotpink"
-                                                    : item.color.name,
-                                        }}
-                                    ></span>
-                                </Link>
-                            </li>
-                        );
-                    })
-                )}
-            </ul>
-        </>
+        <div className="home">
+            <header>
+                <h1>Liste des pokemon</h1>
+            </header>
+            <aside className="changePage1">
+                <button onClick={() => pageChange(page - 1)}>&lt;</button>
+            </aside>
+            <main>
+                <h2>Page {page}</h2>
+                <ul className="listPokemons">
+                    {isLoading ? (
+                        <div className="loader"></div>
+                    ) : (
+                        pokemons["hydra:member"].map((item) => {
+                            return (
+                                <li key={item.id}>
+                                    <Link to={`pokemon/${item.id}`}>
+                                        <img
+                                            loading="lazy"
+                                            src={item.front_default}
+                                            alt={"photo de : " + item.name}
+                                        />
+                                        <p>
+                                            {item.name} / {item.id}
+                                        </p>
+                                        <span
+                                            style={{
+                                                background:
+                                                    item.color.name == "white"
+                                                        ? "dimgrey"
+                                                        : item.color.name ==
+                                                          "pink"
+                                                        ? "hotpink"
+                                                        : item.color.name,
+                                            }}
+                                        ></span>
+                                    </Link>
+                                </li>
+                            );
+                        })
+                    )}
+                </ul>
+            </main>
+            <aside className="changePage2">
+                <button onClick={() => pageChange(page + 1)}>&gt;</button>
+            </aside>
+        </div>
     );
 };
 

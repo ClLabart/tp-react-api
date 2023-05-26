@@ -13,6 +13,7 @@ const Router = ({ children }) => {
                     <Route path="login" element={<Login />} />
                     <Route index element={<Home />} />
                     <Route path="pokemon/:id" element={<Pokemon />} />
+                    <Route path="/*" element={<Home />} />
                 </Routes>
                 {children}
             </BrowserRouter>

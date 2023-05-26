@@ -27,8 +27,9 @@ export function RequireAuth({ children }) {
         } else {
             return children;
         }
-    } else if (typeof window !== 'undefined') { // ne s'éxécute qu'à l'ouverture de l'application
-        // fetch /users/me pour vérifier que tout est bon 
+    // } else if (typeof window !== 'undefined') {
+    //     // ne s'éxécute qu'à l'ouverture de l'application
+    //     return <Navigate to="/login" replace={true} />;
     } else {
         return children;
     }
@@ -45,6 +46,9 @@ function App() {
                 <RequireAuth></RequireAuth>
             </Router>
             <Outlet />
+            <footer>
+                Chloé
+            </footer>
         </>
     );
 }

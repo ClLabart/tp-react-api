@@ -43,9 +43,12 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
+        <div className="login">
+            <header>
+                <h1>App pokemons</h1>
+            </header>
             {formSubmitting ? (
-                <p>Loading</p>
+                <div className="loader"></div>
             ) : (
                 <LoginForm handleSubmit={handleSubmit} />
             )}
